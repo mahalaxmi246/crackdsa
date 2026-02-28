@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrackDSA.in — Legal & Policies</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: #2a2a3d;
+    --accent: #7c3aed;
+    --accent2: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --sub: #94a3b8;
+    --green: #10b981;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); min-height:100vh; }
+
+  /* NAV */
+  nav {
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,10,15,.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:0 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:56px;
+  }
+  .logo { font-family:var(--mono); font-weight:700; font-size:.85rem; color:var(--accent2); letter-spacing:.04em; }
+  .logo span { color:var(--green); }
+  .nav-links { display:flex; gap:4px; flex-wrap:wrap; }
+  .nav-btn {
+    background:none; border:none; cursor:pointer;
+    font-family:var(--mono); font-size:.65rem; color:var(--muted);
+    padding:5px 10px; border-radius:6px; letter-spacing:.04em;
+    transition:all .15s;
+  }
+  .nav-btn:hover { color:var(--accent2); background:rgba(124,58,237,.1); }
+  .nav-btn.active { color:var(--accent2); background:rgba(124,58,237,.15); border:1px solid rgba(124,58,237,.3); }
+
+  /* PAGES */
+  .page { display:none; max-width:780px; margin:0 auto; padding:48px 24px 80px; }
+  .page.active { display:block; }
+
+  /* PAGE HEADER */
+  .page-tag {
+    font-family:var(--mono); font-size:.6rem; color:var(--accent);
+    letter-spacing:.12em; margin-bottom:10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .page-tag::before { content:''; width:24px; height:1px; background:var(--accent); }
+  h1 { font-size:2.2rem; font-weight:800; color:var(--text); margin-bottom:8px; line-height:1.2; }
+  .page-sub { color:var(--sub); font-size:.88rem; margin-bottom:40px; line-height:1.6; }
+
+  /* DIVIDER */
+  .divider {
+    height:1px; background:linear-gradient(90deg, var(--accent), transparent);
+    margin:32px 0; opacity:.3;
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom:36px; }
+  .section h2 {
+    font-size:1rem; font-weight:700; color:var(--accent2);
+    margin-bottom:12px; font-family:var(--mono);
+    display:flex; align-items:center; gap:8px;
+  }
+  .section h2::before { content:'//'; color:var(--accent); opacity:.7; font-size:.8rem; }
+  .section p { color:var(--sub); font-size:.87rem; line-height:1.8; margin-bottom:10px; }
+  .section ul { list-style:none; padding:0; }
+  .section ul li {
+    color:var(--sub); font-size:.87rem; line-height:1.8;
+    padding:4px 0 4px 18px; position:relative;
+  }
+  .section ul li::before { content:'→'; position:absolute; left:0; color:var(--accent); font-size:.75rem; }
+
+  /* INFO BOX */
+  .info-box {
+    background:rgba(124,58,237,.07); border:1px solid rgba(124,58,237,.2);
+    border-radius:10px; padding:16px 20px; margin:16px 0;
+  }
+  .info-box p { color:var(--sub); font-size:.85rem; line-height:1.7; margin:0; }
+  .info-box strong { color:var(--accent2); }
+
+  .highlight-box {
+    background:rgba(16,185,129,.06); border:1px solid rgba(16,185,129,.2);
+    border-radius:10px; padding:16px 20px; margin:16px 0;
+  }
+  .highlight-box p { color:#6ee7b7; font-size:.85rem; line-height:1.7; margin:0; }
+
+  .warn-box {
+    background:rgba(245,158,11,.06); border:1px solid rgba(245,158,11,.2);
+    border-radius:10px; padding:16px 20px; margin:16px 0;
+  }
+  .warn-box p { color:#fcd34d; font-size:.85rem; line-height:1.7; margin:0; }
+
+  /* CONTACT CARD */
+  .contact-card {
+    background:var(--surface2); border:1px solid var(--border);
+    border-radius:12px; padding:24px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .contact-row { display:flex; align-items:center; gap:12px; }
+  .contact-icon { width:32px; height:32px; background:rgba(124,58,237,.15); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:.9rem; flex-shrink:0; }
+  .contact-label { font-family:var(--mono); font-size:.58rem; color:var(--muted); letter-spacing:.06em; }
+  .contact-value { font-size:.85rem; color:var(--text); font-weight:600; }
+
+  /* DATE */
+  .last-updated {
+    font-family:var(--mono); font-size:.62rem; color:var(--muted);
+    margin-top:40px; padding-top:20px; border-top:1px solid var(--border);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align:center; padding:24px;
+    font-family:var(--mono); font-size:.62rem; color:var(--muted);
+    border-top:1px solid var(--border);
+  }
+  footer a { color:var(--accent2); text-decoration:none; }
+
+  /* ABOUT HERO */
+  .about-hero {
+    background:linear-gradient(135deg, rgba(124,58,237,.12), rgba(16,185,129,.06));
+    border:1px solid rgba(124,58,237,.2); border-radius:16px;
+    padding:32px; margin-bottom:32px; text-align:center;
+  }
+  .about-emoji { font-size:3rem; margin-bottom:12px; }
+  .about-hero h2 { font-size:1.4rem; font-weight:800; color:var(--text); margin-bottom:8px; }
+  .about-hero p { color:var(--sub); font-size:.88rem; line-height:1.7; max-width:480px; margin:0 auto; }
+
+  .price-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:linear-gradient(135deg,#7c3aed,#5b21b6);
+    color:#fff; font-family:var(--mono); font-size:.7rem; font-weight:700;
+    padding:6px 14px; border-radius:20px; margin:12px 0;
+  }
+
+  /* MOBILE */
+  @media(max-width:600px) {
+    h1 { font-size:1.6rem; }
+    .nav-btn { font-size:.58rem; padding:4px 7px; }
+    .page { padding:32px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Crack<span>DSA</span>.in</div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showPage('return')">Return</button>
+    <button class="nav-btn" onclick="showPage('refund')">Refund</button>
+    <button class="nav-btn" onclick="showPage('privacy')">Privacy</button>
+    <button class="nav-btn" onclick="showPage('disclaimer')">Disclaimer</button>
+    <button class="nav-btn" onclick="showPage('about')">About & Contact</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- RETURN POLICY -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="page-return" class="page active">
+  <div class="page-tag">LEGAL</div>
+  <h1>Return Policy</h1>
+  <p class="page-sub">CrackDSA.in is a digital educational platform. Please read this policy before purchasing.</p>
+
+  <div class="section">
+    <h2>Nature of Product</h2>
+    <p>CrackDSA.in provides lifetime access to digital educational content — a structured 21-week DSA roadmap, concept explanations, code templates, and problem sets. Once access is granted, the digital content is immediately available to you.</p>
+    <div class="warn-box">
+      <p>⚠️ <strong>No Physical Product:</strong> We do not sell or ship any physical goods. All content is digital and delivered instantly upon payment confirmation.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Return Eligibility</h2>
+    <p>Because our product is a digital service with immediate access upon purchase, returns are generally not applicable. However, we evaluate requests on a case-by-case basis under the following conditions:</p>
+    <ul>
+      <li>You were charged but did not receive access (technical failure)</li>
+      <li>You were charged twice for the same purchase</li>
+      <li>The payment was processed but your account was not upgraded</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Non-Returnable Cases</h2>
+    <ul>
+      <li>Change of mind after purchase</li>
+      <li>You have already accessed the paid content</li>
+      <li>Dissatisfaction with the course structure or difficulty level</li>
+      <li>You found the content elsewhere for free</li>
+    </ul>
+    <div class="info-box">
+      <p><strong>Our recommendation:</strong> Use the free preview (Weeks 1–5) before purchasing. This gives you a clear understanding of the platform quality and teaching style before you commit.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>How to Request</h2>
+    <p>If you believe your situation qualifies for a return under the eligible cases above, please contact us within <strong>7 days</strong> of purchase with:</p>
+    <ul>
+      <li>Your registered email address</li>
+      <li>Payment receipt or transaction ID</li>
+      <li>Brief description of the issue</li>
+    </ul>
+    <p>Email us at: <strong style="color:var(--accent2)">support@crackdsa.in</strong></p>
+  </div>
+
+  <p class="last-updated">Last Updated: February 2026 · CrackDSA.in</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- REFUND POLICY -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="page-refund" class="page">
+  <div class="page-tag">LEGAL</div>
+  <h1>Refund Policy</h1>
+  <p class="page-sub">We want to be fair and transparent about how refunds work on CrackDSA.in.</p>
+
+  <div class="section">
+    <h2>One-Time Lifetime Payment</h2>
+    <p>CrackDSA.in offers a <strong style="color:var(--accent2)">one-time payment of ₹49</strong> for lifetime access to all premium content. This is a deliberate choice to make quality DSA preparation affordable for every student in India.</p>
+    <div class="highlight-box">
+      <p>✅ <strong>Lifetime Access:</strong> Pay once, access everything forever — including all future updates to the roadmap and concept library.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Refund Eligibility</h2>
+    <p>Refunds are processed only in the following specific cases:</p>
+    <ul>
+      <li><strong>Double charge:</strong> If your payment was deducted twice for the same purchase</li>
+      <li><strong>Failed delivery:</strong> Payment was deducted but your account was not upgraded to paid status within 24 hours</li>
+      <li><strong>Technical error:</strong> A verified bug caused incorrect billing</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Refund Process</h2>
+    <ul>
+      <li>Submit a refund request within <strong>7 days</strong> of purchase</li>
+      <li>Email <strong style="color:var(--accent2)">support@crackdsa.in</strong> with your transaction ID and registered email</li>
+      <li>We will verify the claim within <strong>2–3 business days</strong></li>
+      <li>Approved refunds are processed back to your original payment method within <strong>5–7 business days</strong></li>
+    </ul>
+    <div class="info-box">
+      <p><strong>Payment Gateway:</strong> Refunds are processed through Razorpay. The actual credit timeline depends on your bank or UPI provider after we initiate the refund.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>No Subscription — No Recurring Charges</h2>
+    <p>CrackDSA.in does not charge any recurring subscription fee. You will never be automatically billed. The ₹49 is a one-time lifetime payment — there is nothing more to cancel or stop.</p>
+    <div class="warn-box">
+      <p>⚠️ If you see any recurring charge from an entity claiming to be CrackDSA.in, please report it immediately to <strong>support@crackdsa.in</strong> — it is fraudulent.</p>
+    </div>
+  </div>
+
+  <p class="last-updated">Last Updated: February 2026 · CrackDSA.in</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PRIVACY POLICY -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="page-privacy" class="page">
+  <div class="page-tag">LEGAL</div>
+  <h1>Privacy Policy</h1>
+  <p class="page-sub">We respect your privacy. Here is exactly what we collect, why, and how we protect it.</p>
+
+  <div class="section">
+    <h2>What We Collect</h2>
+    <p>When you use CrackDSA.in, we collect the following information:</p>
+    <ul>
+      <li><strong>Email address</strong> — used for authentication (via Google Sign-In or email/password)</li>
+      <li><strong>Display name</strong> — shown on your dashboard</li>
+      <li><strong>Progress data</strong> — which problems you've checked off, your streak count</li>
+      <li><strong>Feedback messages</strong> — if you submit a feedback form voluntarily</li>
+      <li><strong>Payment status</strong> — whether your account is free or paid (we do not store card details)</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>What We Do NOT Collect</h2>
+    <ul>
+      <li>Credit/debit card numbers or UPI IDs (handled entirely by Razorpay)</li>
+      <li>Phone numbers (unless you voluntarily provide one)</li>
+      <li>Location data or IP address logs</li>
+      <li>Browser history or tracking cookies</li>
+      <li>Any data from third-party apps or social media accounts</li>
+    </ul>
+    <div class="highlight-box">
+      <p>✅ We use <strong>Google Firebase</strong> for authentication and data storage. Your data is stored securely in Firebase Firestore, protected by Google's security infrastructure.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>How We Use Your Data</h2>
+    <ul>
+      <li>To authenticate your identity and maintain your session</li>
+      <li>To save and restore your problem-solving progress across devices</li>
+      <li>To verify payment status and grant/restrict access to paid content</li>
+      <li>To respond to feedback you submit through the platform</li>
+      <li>To improve the platform based on aggregated, anonymised usage patterns</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Third-Party Services</h2>
+    <p>CrackDSA.in uses the following third-party services:</p>
+    <ul>
+      <li><strong>Google Firebase</strong> — authentication and database (Google Privacy Policy applies)</li>
+      <li><strong>Razorpay</strong> — payment processing (Razorpay Privacy Policy applies)</li>
+      <li><strong>Google Fonts</strong> — typography (no personal data shared)</li>
+    </ul>
+    <p>We do not sell, rent, or share your personal data with any other third parties for marketing or analytics purposes.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Data Retention & Deletion</h2>
+    <p>Your data is retained as long as your account is active. If you wish to delete your account and all associated data, email us at <strong style="color:var(--accent2)">support@crackdsa.in</strong> and we will permanently delete your data within 7 business days.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Children's Privacy</h2>
+    <p>CrackDSA.in is intended for users aged 16 and above (primarily college students and professionals). We do not knowingly collect data from children under 13. If you believe a minor has signed up, please contact us immediately.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Changes to This Policy</h2>
+    <p>We may update this privacy policy as the platform evolves. Material changes will be communicated via the platform dashboard. Continued use after changes constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <p class="last-updated">Last Updated: February 2026 · CrackDSA.in</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- DISCLAIMER -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="page-disclaimer" class="page">
+  <div class="page-tag">LEGAL</div>
+  <h1>Disclaimer</h1>
+  <p class="page-sub">Please read this disclaimer carefully before using CrackDSA.in.</p>
+
+  <div class="section">
+    <h2>Educational Purpose Only</h2>
+    <p>CrackDSA.in is an independent educational platform created to help students prepare for technical interviews at software companies. All content — including problem lists, concept explanations, code templates, and weekly roadmaps — is purely educational in nature.</p>
+    <div class="info-box">
+      <p><strong>We are not affiliated with, endorsed by, or officially connected to</strong> LeetCode, Google, Amazon, Microsoft, Meta, Samsung, Flipkart, or any other company mentioned on this platform. Company names and logos are referenced only for contextual educational purposes.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>No Guarantee of Employment</h2>
+    <p>Completing the CrackDSA.in roadmap does not guarantee placement, interview calls, or job offers at any company. Interview outcomes depend on many factors including:</p>
+    <ul>
+      <li>Individual effort and consistency of practice</li>
+      <li>Performance on the day of interview</li>
+      <li>Company-specific hiring requirements and available positions</li>
+      <li>Communication skills, cultural fit, and other non-technical factors</li>
+    </ul>
+    <div class="warn-box">
+      <p>⚠️ Results may vary. Success stories shared on the platform reflect individual outcomes and are not representative of average or guaranteed results.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Accuracy of Content</h2>
+    <p>While we strive to keep all content accurate and up to date, we cannot guarantee that every problem classification, difficulty rating, or company tag is perfectly accurate at all times. Interview patterns change across hiring cycles. We welcome corrections via our feedback form.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>LeetCode Problem Links</h2>
+    <p>CrackDSA.in links to problems on LeetCode.com for practice. We are not affiliated with LeetCode. Problem availability, numbering, or difficulty on LeetCode may change without notice. We are not responsible for changes made to third-party platforms.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Intellectual Property</h2>
+    <p>All original content on CrackDSA.in — including roadmap structure, concept explanations, teaching frameworks, UI design, and code templates — is the intellectual property of CrackDSA.in. Reproduction, redistribution, or resale of any content without written permission is strictly prohibited.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Limitation of Liability</h2>
+    <p>CrackDSA.in and its creators shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the platform, including but not limited to: unsuccessful interviews, missed opportunities, or decisions made based on platform content.</p>
+  </div>
+
+  <p class="last-updated">Last Updated: February 2026 · CrackDSA.in</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ABOUT & CONTACT -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="page-tag">ABOUT</div>
+  <h1>About & Contact</h1>
+  <p class="page-sub">CrackDSA.in is built by a student, for students.</p>
+
+  <div class="about-hero">
+    <div class="about-emoji">🎯</div>
+    <h2>The Story Behind CrackDSA.in</h2>
+    <p>I was a 19-year-old engineering student overwhelmed by the chaos of DSA preparation. No clear roadmap. No structured curriculum. Just 500 random LeetCode problems and no idea where to start.</p>
+    <br>
+    <p>So I built what I wish I'd had — a structured 21-week roadmap from zero to interview-ready, with every problem organised by pattern, week, and company. Priced at ₹49 so no student ever has to choose between prep resources and lunch.</p>
+    <div class="price-badge">₹49 · One Time · Lifetime Access</div>
+  </div>
+
+  <div class="section">
+    <h2>What CrackDSA.in Is</h2>
+    <ul>
+      <li>A structured 21-week DSA preparation roadmap</li>
+      <li>500+ problems organised by pattern, week, and company tag</li>
+      <li>Concept explanations with Python, C++, and Java code templates</li>
+      <li>Streak tracking, progress saving, and completion certificate</li>
+      <li>Built specifically for MNC placements (Amazon, Google, Microsoft, Samsung, etc.)</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Contact Us</h2>
+    <p>Have a question, found a bug, or want to report an issue? Reach out — I personally read and respond to every message.</p>
+
+    <div class="contact-card">
+      <div class="contact-row">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">EMAIL (PRIMARY)</div>
+          <div class="contact-value">support@crackdsa.in</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <div class="contact-label">WEBSITE</div>
+          <div class="contact-value">crackdsa.in</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">⏱️</div>
+        <div>
+          <div class="contact-label">RESPONSE TIME</div>
+          <div class="contact-value">Within 24–48 hours on weekdays</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🇮🇳</div>
+        <div>
+          <div class="contact-label">LOCATION</div>
+          <div class="contact-value">India · IST (UTC +5:30)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Grievance Redressal</h2>
+    <p>In accordance with the Information Technology Act, 2000 and rules made thereunder, the name and contact details of the Grievance Officer are provided below:</p>
+    <div class="info-box">
+      <p>
+        <strong>Grievance Officer:</strong> CrackDSA.in Support Team<br>
+        <strong>Email:</strong> support@crackdsa.in<br>
+        <strong>Response window:</strong> Complaints will be acknowledged within 48 hours and resolved within 15 working days.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Report Payment Issues</h2>
+    <p>If you have been charged incorrectly, experienced a payment failure, or have any billing-related concern, please email us with your Razorpay transaction ID and we will resolve it within 2–3 business days.</p>
+    <div class="highlight-box">
+      <p>✅ All payment complaints are handled with priority. We aim to resolve all payment issues within 72 hours of receipt.</p>
+    </div>
+  </div>
+
+  <p class="last-updated">Last Updated: February 2026 · CrackDSA.in</p>
+</div>
+
+<footer>
+  <div style="margin-bottom:8px">
+    <span onclick="showPage('return')" style="cursor:pointer;margin:0 8px">Return Policy</span>·
+    <span onclick="showPage('refund')" style="cursor:pointer;margin:0 8px">Refund Policy</span>·
+    <span onclick="showPage('privacy')" style="cursor:pointer;margin:0 8px">Privacy Policy</span>·
+    <span onclick="showPage('disclaimer')" style="cursor:pointer;margin:0 8px">Disclaimer</span>·
+    <span onclick="showPage('about')" style="cursor:pointer;margin:0 8px">About & Contact</span>
+  </div>
+  © 2026 CrackDSA.in · Built by a student, for students · <a href="mailto:support@crackdsa.in">support@crackdsa.in</a>
+</footer>
+
+<script>
+function showPage(id) {
+  // Remove active class from all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+  // Remove active class from nav buttons
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  // Activate correct page
+  const page = document.getElementById('page-' + id);
+  if (page) {
+    page.classList.add('active');
+  }
+
+  // Activate correct nav button
+  const activeBtn = document.querySelector(`.nav-btn[onclick="showPage('${id}')"]`);
+  if (activeBtn) {
+    activeBtn.classList.add('active');
+  }
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 🔥 Handle URL hash on page load
+function loadFromHash() {
+  const hash = window.location.hash.replace('#', '');
+
+  if (hash) {
+    showPage(hash);
+  } else {
+    showPage('return'); // default page
+  }
+}
+
+// Run when page loads
+window.addEventListener('load', loadFromHash);
+
+// Run when hash changes
+window.addEventListener('hashchange', loadFromHash);
+</script>
+</body>
+</html>

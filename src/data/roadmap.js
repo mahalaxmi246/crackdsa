@@ -1384,5 +1384,5 @@ export const WEEKS = [
 // paywall: free users get weeks 1–8, paid users get all 21
 export const FREE_WEEKS = 5;
 export const PRICE = 49;
-export const INSTAMOJO_LINK = import.meta.env.VITE_INSTAMOJO_LINK || 'https://www.instamojo.com/';
+export const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_PLACEHOLDER';
 export const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || 'support@crackdsa.in';
